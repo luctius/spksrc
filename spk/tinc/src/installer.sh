@@ -24,9 +24,14 @@ postinst ()
     # etc
     mkdir -p /usr/local/etc/tinc
     mkdir -p ${SYNOPKG_PKGDEST}/var/run
-    mkdir -p ${SYNOPKG_PKGDEST}/etc/tinc
+    mkdir -p ${SYNOPKG_PKGDEST}/var/log
+    mkdir -p ${SYNOPKG_PKGDEST}/etc/
     ln -s /usr/local/etc/tinc ${SYNOPKG_PKGDEST}/etc/
-    echo  "## This file contains all names of the networks to be started on system startup." > /usr/local/etc/tinc/nets.boot
+
+    if [ ! -f /usr/local/etc/tinc/nets.boot ]
+    then
+        echo  "## This file contains all names of the networks to be started on system startup." > /usr/local/etc/tinc/nets.boot
+    fi
 
     # Install busybox stuff
     ${INSTALL_DIR}/bin/busybox --install ${INSTALL_DIR}/bin

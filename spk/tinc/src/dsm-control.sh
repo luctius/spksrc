@@ -91,9 +91,16 @@ restart() {
   start "$@"
 }
 
+status() {
+  if [ ! -f $PID_FILE.$1.pid ]
+  then
+    exit 1
+  fi
+}
+
 case "$1" in
   start)
-    foreach_net "Starting $DESC:" start
+    foreach_net "Starting $DESC:" start ; exit 0
   ;;
   stop)
     foreach_net "Stopping $DESC:" stop
@@ -106,6 +113,9 @@ case "$1" in
   ;;
   alarm)
     signal_running ALRM
+  ;;
+  status)
+    foreach_net "Checking $DESC:" status
   ;;
   *)
     echo "Usage: /etc/init.d/$NAME {start|stop|reload|restart|force-reload|alarm|status}"
