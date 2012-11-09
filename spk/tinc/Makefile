@@ -7,14 +7,14 @@ DSM_UI_DIR = app
 DEPENDS = cross/busybox cross/$(SPK_NAME)
 
 MAINTAINER = Cor
-DESCRIPTION = tinc
+DESCRIPTION = Tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet.
 DESCRIPTION_FRE = 
 DESCRIPTION_SPN = 
 RELOAD_UI = no
 DISPLAY_NAME = Tinc
 
 HOMEPAGE = http://www.tinc-vpn.org
-LICENSE  =
+LICENSE  = gpl2 or later
 
 WIZARDS_DIR =
 
